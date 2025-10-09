@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CSharp\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj": {}
+    "D:\\CSharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj": {}
   },
   "projects": {
-    "D:\\CSharp\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj": {
+    "D:\\CSharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CSharp\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj",
+        "projectUniqueName": "D:\\CSharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj",
         "projectName": "Laboratorio8",
-        "projectPath": "D:\\CSharp\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj",
+        "projectPath": "D:\\CSharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj",
         "packagesPath": "C:\\Users\\esteb\\.nuget\\packages\\",
-        "outputPath": "D:\\CSharp\\Laboratorio8\\Laboratorio8\\obj\\",
+        "outputPath": "D:\\CSharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\esteb\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -47,6 +47,20 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.6, )"
             }
           },
           "imports": [
