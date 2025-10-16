@@ -61,4 +61,25 @@ public class ClientsController : ControllerBase
         });
     }
     
+    [HttpGet("clients-orders")]
+    public IActionResult GetClientsWithOrders()
+    {
+        var clientOrders = _unitOfWork.Clients
+            .GetAll()
+            .Select(client => new ClientOrderDto
+            {
+                ClientName = client.Name,
+                Orders = client.orders
+                    .Select(order => new OrderDto
+                    {
+                        Id = order.OrderId,
+                        Date = order.OrderDate
+                    })
+                    .ToList()
+            })
+            .ToList();
+
+        return Ok(clientOrders);
+    }
+    
 }
