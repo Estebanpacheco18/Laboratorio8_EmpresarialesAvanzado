@@ -66,19 +66,26 @@ public class OrdersController : ControllerBase
     [HttpGet("orders-details")]
     public IActionResult GetAllOrdersWithDetails()
     {
-        var ordersWithDetails = _unitOfWork.OrderDetails
-            .GetAll()
-            .Select(od => new
+        var ordersWithDetails = _unitOfWork.Orders
+            .GetAllWithDetails()
+            .Select(order => new OrderDetailsDto
             {
-                OrderId = od.OrderId,
-                ProductName = _unitOfWork.Products.GetAll()
-                    .FirstOrDefault(p => p.ProductId == od.ProductId)?.Name ?? "Product not found",
-                Quantity = od.Quantity
+                OrderId = order.OrderId,
+                OrderDate = order.OrderDate,
+                Products = order.orderdetails
+                    .Select(od => new OrderProductDetailDto
+                    {
+                        ProductName = od.Product.Name,
+                        Quantity = od.Quantity,
+                        Price = od.Product.Price
+                    })
+                    .ToList()
             })
             .ToList();
-    
+
         return Ok(ordersWithDetails);
     }
+
     
     [HttpGet("products-by-client")]
     public IActionResult GetProductsByClient([FromQuery] int clientId)
@@ -102,8 +109,8 @@ public class OrdersController : ControllerBase
     
         return Ok(products);
     }
-    
-[HttpGet("clients-by-product")]
+
+    [HttpGet("clients-by-product")]
     public IActionResult GetClientsByProduct([FromQuery] int productId)
     {
         var orders = _unitOfWork.OrderDetails
@@ -112,7 +119,7 @@ public class OrdersController : ControllerBase
             .Select(od => od.OrderId)
             .Distinct()
             .ToList();
-    
+
         var clients = _unitOfWork.Orders
             .GetAll()
             .Where(o => orders.Contains(o.OrderId))
@@ -123,8 +130,7 @@ public class OrdersController : ControllerBase
             })
             .Distinct()
             .ToList();
-    
+
         return Ok(clients);
     }
-    
 }

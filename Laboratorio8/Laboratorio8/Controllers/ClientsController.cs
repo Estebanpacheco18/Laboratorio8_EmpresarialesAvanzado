@@ -60,7 +60,7 @@ public class ClientsController : ControllerBase
             OrderCount = clientWithMostOrders.OrderCount
         });
     }
-    
+
     [HttpGet("clients-orders")]
     public IActionResult GetClientsWithOrders()
     {
@@ -80,6 +80,44 @@ public class ClientsController : ControllerBase
             .ToList();
 
         return Ok(clientOrders);
+    }
+
+    [HttpGet("clients-with-product-count")]
+    public IActionResult GetClientsWithProductCount()
+    {
+        var clientsWithProductCount = _unitOfWork.Clients
+            .GetAll()
+            .Select(client => new
+            {
+                ClientName = client.Name,
+                TotalProducts = client.orders
+                    .SelectMany(order => order.orderdetails)
+                    .Sum(detail => detail.Quantity)
+            })
+            .ToList();
+
+        return Ok(clientsWithProductCount);
+    }
+    
+    // Nuevo endpoint para obtener ventas totales por cliente
+    [HttpGet("sales-by-client")]
+    public IActionResult GetSalesByClient()
+    {
+        var salesByClient = _unitOfWork.Orders
+            .GetAll()
+            .GroupBy(order => order.ClientId)
+            .Select(group => new SalesByClientDto
+            {
+                ClientName = _unitOfWork.Clients
+                    .GetAll()
+                    .FirstOrDefault(c => c.ClientId == group.Key)?.Name ?? "Cliente no encontrado",
+                TotalSales = group.Sum(order => order.orderdetails
+                    .Sum(detail => detail.Quantity * detail.Product.Price))
+            })
+            .OrderByDescending(s => s.TotalSales)
+            .ToList();
+
+        return Ok(salesByClient);
     }
     
 }
