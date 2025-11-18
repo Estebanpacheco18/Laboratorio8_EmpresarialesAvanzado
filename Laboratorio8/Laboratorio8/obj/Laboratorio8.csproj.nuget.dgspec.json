@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CSharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj": {}
+    "E:\\Csharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj": {}
   },
   "projects": {
-    "D:\\CSharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj": {
+    "E:\\Csharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CSharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj",
+        "projectUniqueName": "E:\\Csharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj",
         "projectName": "Laboratorio8",
-        "projectPath": "D:\\CSharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj",
+        "projectPath": "E:\\Csharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\Laboratorio8.csproj",
         "packagesPath": "C:\\Users\\esteb\\.nuget\\packages\\",
-        "outputPath": "D:\\CSharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\obj\\",
+        "outputPath": "E:\\Csharp\\Laboratorio8_EmpresarialesAvanzado\\Laboratorio8\\Laboratorio8\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\esteb\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -44,6 +44,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "EPPlus": {
+              "target": "Package",
+              "version": "[8.2.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.9, )"
@@ -82,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.307/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

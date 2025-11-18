@@ -1,9 +1,15 @@
 using Laboratorio8.Data;
+using Laboratorio8.Queries;
 using Laboratorio8.Repositories;
 using Laboratorio8.Repositories.Interfaces;
+using Laboratorio8.Services;
 using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configurar la licencia de EPPlus
+ExcelPackage.License.SetNonCommercialPersonal("Esteban");
 
 // Registrar el contexto de base de datos
 builder.Services.AddDbContext<LINQExampleContext>(options =>
@@ -25,6 +31,10 @@ builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+
+builder.Services.AddScoped<GetSalesByClientQuery>();
+builder.Services.AddScoped<GetTopSellingProductsQuery>();
+builder.Services.AddScoped<ExcelReportService>();
 
 var app = builder.Build();
 
